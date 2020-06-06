@@ -25,6 +25,7 @@
     "font-awesome": "^4.7.0",
     "graphql": "^15.0.0",
     "graphql-tag": "^2.10.3",
+    "graphql-tools": "^6.0.5",
     "micro": "^9.3.4",
     "notarealdb": "^0.2.2",
     "nuxt": "^2.0.0",

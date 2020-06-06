@@ -2,7 +2,7 @@
   <v-app-bar app>
     <v-toolbar color="primary" fixed dark>
       <v-toolbar-title class="ml-0 pl-3">
-        <v-icon @click.stop="toggleDrawer()"></v-icon>
+        <v-icon @click.stop="toggleDrawer()">menu</v-icon>
       </v-toolbar-title>
       <v-text-field
         text
@@ -12,7 +12,7 @@
         class="hidden-sm-and-down"
       ></v-text-field>
       <v-spacer></v-spacer>
-      <v-btn icon href="https://github.com/moeddami/nuxt-material-admin">
+      <v-btn icon href="https://github.com/varit05/media-admin">
         <v-icon>fa-2x fa-github</v-icon>
       </v-btn>
       <v-btn icon @click="handleFullScreen()">

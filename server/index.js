@@ -1,11 +1,19 @@
 const express = require('express')
 const consola = require('consola');
-const { Nuxt, Builder } = require('nuxt')
+const {
+  Nuxt,
+  Builder
+} = require('nuxt')
 const app = express()
 const fs = require('fs');
 const expressJwt = require('express-jwt');
-const { ApolloServer, gql } = require('apollo-server-express');
-require('dotenv').config()
+const {
+  ApolloServer,
+  gql
+} = require('apollo-server-express');
+require('dotenv').config();
+
+const schema = require('../graphql/schema')
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
 config.dev = process.env.NODE_ENV !== 'production'
@@ -14,7 +22,10 @@ async function start() {
   // Init Nuxt.js
   const nuxt = new Nuxt(config)
 
-  const { host, port } = nuxt.options.server
+  const {
+    host,
+    port
+  } = nuxt.options.server
 
   await nuxt.ready()
   // Build only in dev mode
@@ -33,13 +44,14 @@ async function start() {
   );
 
   // graphql
-  const typeDefs = gql(
-    fs.readFileSync("./graphql/schema.graphql", { encoding: "utf8" })
-  );
-  const resolvers = require('../graphql/resolvers/programs');
-  const apolloServer = new ApolloServer({ typeDefs, resolvers });
+  const apolloServer = new ApolloServer({
+    schema
+  });
 
-  apolloServer.applyMiddleware({ app, path: '/graphql' });
+  apolloServer.applyMiddleware({
+    app,
+    path: '/graphql'
+  });
 
   // Give nuxt middleware to express
   app.use(nuxt.render)
@@ -52,4 +64,4 @@ async function start() {
     badge: true
   })
 }
-start()
+start();
