@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <!-- <v-app dark>
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="miniVariant"
@@ -61,7 +61,10 @@
     <v-footer :fixed="fixed" app>
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
-  </v-app>
+  </v-app>-->
+  <div id="appRoot">
+    <nuxt/>
+  </div>
 </template>
 
 <script>

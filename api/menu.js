@@ -99,7 +99,7 @@ const Menu = [
     ]
   },
   {
-    title: 'Forms & Controls',
+    title: 'Forms',
     group: 'forms',
     component: 'forms',
     icon: 'edit',
