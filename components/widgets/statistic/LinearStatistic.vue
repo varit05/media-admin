@@ -13,7 +13,7 @@
       <v-progress-linear :value="value" height="5" :color="color"></v-progress-linear>
       <span class="caption">{{caption}}</span>
     </v-card-text>
-  </v-card>   
+  </v-card>
 </template>
 
 <script>
@@ -26,13 +26,12 @@ export default {
     color: String
   },
   computed: {
-    caption () {
-      return this.value + '% ' + this.subTitle;
+    caption() {
+      return this.value + '% ' + this.subTitle
     }
   }
-};
+}
 </script>
 
 <style>
-
 </style>

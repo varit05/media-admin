@@ -5,7 +5,6 @@ const {
   Builder
 } = require('nuxt')
 const app = express()
-const fs = require('fs');
 const expressJwt = require('express-jwt');
 const {
   ApolloServer,
@@ -13,7 +12,7 @@ const {
 } = require('apollo-server-express');
 require('dotenv').config();
 
-const schema = require('../graphql/schema')
+const schema = require('./graphql/schema')
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
 config.dev = process.env.NODE_ENV !== 'production'

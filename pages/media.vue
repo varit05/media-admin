@@ -1,16 +1,14 @@
 <template>
   <div id="media" class="media">
-    <!-- <div class="layout row media-layout">
-    <div class="media-content flex transparent">-->
     <vue-perfect-scrollbar class="media-content--warp">
       <v-container grid-list-xl fluid>
         <v-layout row wrap>
           <v-flex sm12>
-            <h3>Current Programs</h3>
+            <h3>Current Running Programs</h3>
           </v-flex>
           <v-flex lg12>
             <v-card>
-              <v-toolbar color="white">
+              <v-toolbar dark>
                 <v-text-field
                   flat
                   solo
@@ -37,9 +35,6 @@
                   v-model="complex.selected"
                 >
                   <template v-slot:action="{item}">
-                    <!-- <td>
-                    <v-checkbox primary hide-details v-model="item.selected"></v-checkbox>
-                    </td>-->
                     <td>{{ item.title }}</td>
                     <td>{{ item.description }}</td>
                     <td>{{ item.media[0].type }}</td>
@@ -60,8 +55,6 @@
       </v-container>
     </vue-perfect-scrollbar>
   </div>
-  <!-- </div>
-  </div>-->
 </template>
 
 <script>
