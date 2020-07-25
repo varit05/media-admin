@@ -141,53 +141,23 @@
             :value="item.linear.value"
           ></circle-statistic>
         </v-flex>
-        <!-- acitivity/chat widget -->
-        <v-flex lg6 sm12 xs12>
-          <chat-window height="308px"></chat-window>
-        </v-flex>
-        <v-flex lg6 sm12 xs12>
-          <v-widget title="Activities" contentBg="white">
-            <div slot="widget-content">
-              <ol class="timeline timeline-activity timeline-point-sm timeline-content-right">
-                <li class="timeline-block" v-for="(item, index) in activity" :key="index">
-                  <div class="timeline-point">
-                    <v-circle dot large :color="item.color"></v-circle>
-                  </div>
-                  <div class="timeline-content">
-                    <time datetime="2018" class="subheading">{{item.timeString}}</time>
-                    <div class="py-2 text--secondary" v-html="item.text"></div>
-                  </div>
-                </li>
-              </ol>
-            </div>
-          </v-widget>
-        </v-flex>
-        <v-flex lg7 sm12 xs12>
-          <plain-table></plain-table>
-        </v-flex>
-        <v-flex lg5 sm12 xs12>
-          <plain-table-order></plain-table-order>
-        </v-flex>
       </v-layout>
     </v-container>
   </div>
 </template>
 
 <script>
-import API from '@/api'
+import API from '@/static/api'
 import EChart from '@/components/chart/echart'
 import MiniStatistic from '@/components/widgets/statistic/MiniStatistic'
 import PostListCard from '@/components/widgets/card/PostListCard'
 import ProfileCard from '@/components/widgets/card/ProfileCard'
 import PostSingleCard from '@/components/widgets/card/PostSingleCard'
 import WeatherCard from '@/components/widgets/card/WeatherCard'
-import PlainTable from '@/components/widgets/list/PlainTable'
-import PlainTableOrder from '@/components/widgets/list/PlainTableOrder'
 import VWidget from '@/components/VWidget'
 import Material from 'vuetify/es5/util/colors'
 import VCircle from '@/components/circle/VCircle'
 import BoxChart from '@/components/widgets/chart/BoxChart'
-import ChatWindow from '@/components/chat/ChatWindow'
 import CircleStatistic from '@/components/widgets/statistic/CircleStatistic'
 import LinearStatistic from '@/components/widgets/statistic/LinearStatistic'
 
@@ -196,7 +166,6 @@ export default {
   components: {
     VWidget,
     MiniStatistic,
-    ChatWindow,
     VCircle,
     WeatherCard,
     PostSingleCard,
@@ -205,57 +174,11 @@ export default {
     EChart,
     BoxChart,
     CircleStatistic,
-    LinearStatistic,
-    PlainTable,
-    PlainTableOrder
+    LinearStatistic
   },
   data: () => ({
     color: Material,
     selectedTab: 'tab-1',
-    linearTrending: [
-      {
-        subheading: 'Sales',
-        headline: '2,55',
-        caption: 'increase',
-        percent: 15,
-        icon: {
-          label: 'trending_up',
-          color: 'success'
-        },
-        linear: {
-          value: 15,
-          color: 'success'
-        }
-      },
-      {
-        subheading: 'Revenue',
-        headline: '6,553',
-        caption: 'increase',
-        percent: 10,
-        icon: {
-          label: 'trending_down',
-          color: 'error'
-        },
-        linear: {
-          value: 15,
-          color: 'error'
-        }
-      },
-      {
-        subheading: 'Orders',
-        headline: '5,00',
-        caption: 'increase',
-        percent: 50,
-        icon: {
-          label: 'arrow_upward',
-          color: 'info'
-        },
-        linear: {
-          value: 50,
-          color: 'info'
-        }
-      }
-    ],
     trending: [
       {
         subheading: 'Email',
@@ -302,12 +225,6 @@ export default {
     ]
   }),
   computed: {
-    activity() {
-      return API.getActivity()
-    },
-    posts() {
-      return API.getPost(3)
-    },
     siteTrafficData() {
       return API.getMonthVisit
     },

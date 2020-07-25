@@ -7,9 +7,10 @@
       <v-text-field
         text
         solo-inverted
-        prepend-icon="search"
+        prepend-inner-icon="search"
         label="Search"
-        class="hidden-sm-and-down"
+        class="ml-5 hidden-sm-and-down"
+        hide-details
       ></v-text-field>
       <v-spacer></v-spacer>
       <v-btn icon href="https://github.com/varit05/media-admin">
@@ -32,7 +33,6 @@
             <v-icon medium>notifications</v-icon>
           </v-badge>
         </v-btn>
-        <notification-list></notification-list>
       </v-menu>
       <v-menu
         offset-y
@@ -43,7 +43,7 @@
       >
         <v-btn icon large text slot:activator="{on}">
           <v-avatar size="30px">
-            <img src="../static/avatar/man_4.jpg" alt="Michael Wang">
+            <img src="../static/avatar/man_1.jpg" alt="Michael Wang">
           </v-avatar>
         </v-btn>
         <v-list class="pa-0">
@@ -71,14 +71,10 @@
   </v-app-bar>
 </template>
 <script>
-import NotificationList from '@/components/widgets/list/NotificationList'
 import Util from '@/util'
 
 export default {
   name: 'app-toolbar',
-  components: {
-    NotificationList
-  },
   data: function() {
     return {
       items: [
@@ -125,3 +121,8 @@ export default {
   }
 }
 </script>
+<style>
+.app--toolbar .v-toolbar__content {
+  padding: 0px;
+}
+</style>

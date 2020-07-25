@@ -53,9 +53,11 @@ module.exports = {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: ['@nuxt/typescript-build', '@nuxtjs/vuetify', ['@nuxtjs/dotenv', {
-    systemvars: true
-  }]],
+  buildModules: ['@nuxt/typescript-build',
+    ['@nuxtjs/dotenv', {
+      systemvars: true
+    }]
+  ],
   /*
    ** Nuxt.js modules
    */
@@ -63,6 +65,7 @@ module.exports = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    '@nuxtjs/vuetify',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
     '@nuxtjs/apollo',
@@ -70,11 +73,6 @@ module.exports = {
   apollo: {
     clientConfigs: {
       default: "~/apollo/apollo-config.js"
-      // default: {
-      //   httpEndpoint: 'http://localhost:3000',
-
-      //   browserHttpEndpoint: '/graphql',
-      // }
     }
   },
   /*
@@ -107,8 +105,9 @@ module.exports = {
    ** Build configuration
    */
   build: {
-    transpile: ['vuetify/lib'],
-    plugins: [new VuetifyLoaderPlugin()],
+    parallel: true,
+    // transpile: ['vuetify/lib'],
+    // plugins: [new VuetifyLoaderPlugin()],
     loaders: {
       scss: {
         import: ["~assets/style/variables.scss", '~/assets/style/theme.scss', '~/assets/style/app.scss']

@@ -50,21 +50,45 @@
 </template>
 
 <script>
+import { LOGIN_USER } from '../graphql-client/queries'
 export default {
   layout: 'default',
   data: () => ({
     loading: false,
     model: {
-      username: 'admin@example.com',
-      password: 'password'
+      username: '',
+      password: ''
     }
   }),
   methods: {
-    login() {
-      this.loading = true
-      setTimeout(() => {
-        this.$router.push('/dashboard')
-      }, 1000)
+    async login() {
+      try {
+        this.loading = true
+        if (!this.model.username && !this.model.password) {
+          return
+        }
+
+        const authDetails = {
+          email: this.model.username,
+          password: this.model.password
+        }
+
+        const { data } = await this.$apollo.query({
+          query: LOGIN_USER,
+          variables: {
+            ...authDetails
+          }
+        })
+
+        const loggedInUser = data.login
+        if (loggedInUser) {
+          this.$router.push('/media')
+        } else {
+          this.$router.push('/login')
+        }
+      } catch (e) {
+        this.$router.push('/login')
+      }
     }
   }
 }
