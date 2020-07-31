@@ -2,7 +2,7 @@ import {
   createHttpLink
 } from 'apollo-link-http'
 const PORT = process.env.PORT || 3000;
-const url = process.env === 'production' ? '' : `http://localhost:${PORT}/graphql`;
+const url = process.env.NODE_ENV === 'production' ? 'https://nifty-heyrovsky-bc910d.netlify.app/graphql' : `http://localhost:${PORT}/graphql`;
 
 console.log('url', url);
 
